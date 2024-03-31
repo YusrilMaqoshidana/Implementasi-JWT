@@ -79,7 +79,12 @@
         "IsRequired": false
       },
       {
-        "Name": "nama_peran",
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -130,7 +135,12 @@
         "IsRequired": false
       },
       {
-        "Name": "nama_peran",
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -150,7 +160,7 @@
   {
     "ContainingType": "JWTAuth.Controllers.PersonController",
     "Method": "DeletePersonWithAuth",
-    "RelativePath": "api/person/{id}",
+    "RelativePath": "api/person_auth/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

@@ -15,7 +15,7 @@ namespace JWTAuth.Models
         public List<Person> ListPerson()
         {
             List<Person> list1 = new List<Person>();
-            string query = string.Format(@"SELECT id_person, nama, alamat, email FROM users.person;");
+            string query = string.Format(@"SELECT id_person, nama, alamat, email, username, password FROM users.person;");
             SqlDBHelper db = new SqlDBHelper(this.__constr);
             try
             {
@@ -28,7 +28,9 @@ namespace JWTAuth.Models
                         id_person = int.Parse(reader["id_person"].ToString()),
                         nama = reader["nama"].ToString(),
                         alamat = reader["alamat"].ToString(),
-                        email = reader["email"].ToString()
+                        email = reader["email"].ToString(),
+                        username = reader["username"].ToString(),
+                        password = reader["password"].ToString(),
                     });
                 }
                 cmd.Dispose();
@@ -43,7 +45,7 @@ namespace JWTAuth.Models
 
         public void PostPerson(Person person)
         {
-            string query = string.Format(@"INSERT INTO users.person (id_person, nama, alamat, email) VALUES ('{0}', '{1}', '{2}', '{3}');", person.id_person, person.nama, person.alamat, person.email);
+            string query = string.Format(@"INSERT INTO users.person (id_person, nama, alamat, email, username, password) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');", person.id_person, person.nama, person.alamat, person.email, person.username, person.password);
             SqlDBHelper db = new SqlDBHelper(this.__constr);
 
             try
@@ -61,7 +63,7 @@ namespace JWTAuth.Models
 
         public void PutPerson(int id, Person person)
         {
-            string query = string.Format(@"UPDATE users.person SET nama = '{0}', alamat = '{1}', email = '{2}' WHERE id_person = '{3}';", person.nama, person.alamat, person.email, id);
+            string query = string.Format(@"UPDATE users.person SET nama = '{0}', alamat = '{1}', email = '{2}', username = '{3}', password = '{4}' WHERE id_person = '{5}';", person.nama, person.alamat, person.email, person.username, person.password, id);
             SqlDBHelper db = new SqlDBHelper(this.__constr);
 
             try
@@ -79,7 +81,7 @@ namespace JWTAuth.Models
 
         public void DeletePerson(int id)
         {
-            string query = string.Format(@"DELETE FROM users.person WHERE id_person = {0}", id);
+            string query = string.Format(@"DELETE FROM users.person WHERE id_person = '{0}'", id);
             SqlDBHelper db = new SqlDBHelper(this.__constr);
 
             try

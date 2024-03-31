@@ -36,7 +36,7 @@ namespace JWTAuth.Controllers
             context.PutPerson(id, person);
             return Ok();
         }
-        [HttpDelete("api/person/{id}"), Authorize]
+        [HttpDelete("api/person_auth/{id}"), Authorize]
         public ActionResult<Person> DeletePersonWithAuth(int id)
         {
             PersonContext context = new PersonContext(this.__constr);
